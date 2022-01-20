@@ -1,12 +1,5 @@
 pipeline {
-    agent {
-        // Define agent details here
-    }
-    environment {
-        GITHUB_ACCESS_KEY_ID     = credentials('jenkins-GITHUB-secret-key-id')
-        GITHUB_SECRET_ACCESS_KEY = credentials('jenkins-GITHUB-secret-access-key')
-    }
-
+    agent any 
     stages {
         stage('Clone') {
             steps {
@@ -15,20 +8,12 @@ pipeline {
 
             }
         }
-        
         stage('Build') {
-            steps {
-                withGradle {
-                    sh 'gradle build'
-                }
+                steps {
+                    sh 'cd Jenkins_Gradle && chmod +x gradlew && ./gradlew clean build'
             }
         }
-        stage('Unit Tests') {
-            steps {
-                    junit '**/build/test-results/test/TEST-*.xml'
-                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') 
-            }
-        }
-        
- #work in progress
-       
+    }
+} 
+
+
