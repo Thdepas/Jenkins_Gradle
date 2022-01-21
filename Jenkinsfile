@@ -16,6 +16,7 @@ pipeline {
         stage ('Release to Github') {
 	            steps {
 	                sh 'gh --version'
+                    sh 'echo 666'
                }
             }
     }
