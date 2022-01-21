@@ -16,7 +16,7 @@ pipeline {
         stage ('Release to Github') {
 	            steps {
 	                sh 'gh --version'
-                    sh 'echo wallah'
+                    sh 'echo wallah hohoho'
                }
             }
     }
