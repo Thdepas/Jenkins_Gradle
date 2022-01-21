@@ -1,3 +1,5 @@
 Manifest-Version: 1.0
+Implementation-Title: Caesar Cipher
+Implementation-Version: 0.1.0-SNAPSHOT
 Main-Class: caesars.cipher.Main
 

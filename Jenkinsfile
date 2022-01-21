@@ -1,5 +1,5 @@
 pipeline {
-    agent any 
+  agent any 
     stages {
         stage('Clone') {
             steps {
@@ -13,7 +13,14 @@ pipeline {
                     sh 'cd Jenkins_Gradle && chmod +x gradlew && ./gradlew clean build'
             }
         }
+        stage ('Release to Github') {
+	            steps {
+	                sh 'gh --version'
+               }
+            }
     }
 } 
+
+
 
 
