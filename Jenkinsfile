@@ -15,8 +15,7 @@ pipeline {
         }
         stage ('Release to Github') {
 	            steps {
-	                sh 'gh auth login --with-token < $GITHUB_TOKEN'
-                    sh 'gh release upload  0.0.1 /var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher-0.1.0-SNAPSHOT.jar/'
+                    sh 'gh release upload  0.0.1 /var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher-0.1.0-SNAPSHOT.jar/ Trololo'
                }
             }
     }
