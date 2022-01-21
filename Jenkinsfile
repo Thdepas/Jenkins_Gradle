@@ -16,7 +16,7 @@ pipeline {
         stage ('Release to Github') {
 	            steps {
 	                sh 'gh --version'
-                    sh 'echo wallah hohoho'
+                    sh 'gh release upload /var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher-0.1.0-SNAPSHOT.jar/'
                }
             }
     }
