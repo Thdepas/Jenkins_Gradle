@@ -18,12 +18,10 @@ pipeline {
                     sh '''
                         #!/bin/bash
 
-
-                        VERSION=`git describe --abbrev=0 --tags 2>/dev/null `
+                        VERSION=`git tag --list --sort=version:refname '1*' | tail -1`
 
                         VERSION_BITS=(${VERSION//./ })
 
-                        #get number parts and increase last one by 1
                         VNUM1=${VERSION_BITS[0]}
                         VNUM2=${VERSION_BITS[1]}
                         VNUM3=${VERSION_BITS[2]}
@@ -49,17 +47,9 @@ pipeline {
                         NEW_TAG="v$VNUM1.$VNUM2.$VNUM3"
 
                         echo "Updating $VERSION to $NEW_TAG"
-
-                        GIT_COMMIT=`git rev-parse HEAD`
-                        NEEDS_TAG=`git describe  $GIT_COMMIT --contains --tags --always 2>/dev/null `
-
-                        if [ -z "$NEEDS_TAG" ]; then
-                            echo "Tagged with $NEW_TAG (Ignoring fatal:cannot describe - this means commit is untagged) "
-                            gh release create $NEW_TAG
-                            gh release upload $NEW_TAG /var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher.jar
-                        else
-                            echo "Already a tag on this commit"
-                        fi
+                        echo "Tagged with $NEW_TAG 
+                        gh release create $NEW_TAG
+                        gh release upload $NEW_TAG /var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher.jar
 
                     ''' }
             }
