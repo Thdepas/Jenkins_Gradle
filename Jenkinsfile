@@ -17,7 +17,8 @@ pipeline {
 	            steps {
                     sh '''
                     #!/bin/bash
-                    VERSION=`git describe --abbrev=0 --tags --always`
+
+                    VERSION=`git describe --abbrev=0 --tags 2>/dev/null`
                     VERSION_BITS=(${VERSION//./ })
                     
                     VNUM1=${VERSION_BITS[0]}
