@@ -44,7 +44,7 @@ NEEDS_TAG=`git describe  $GIT_COMMIT --contains --tags --always 2>/dev/null `
 if [ -z "$NEEDS_TAG" ]; then
     echo "Tagged with $NEW_TAG (Ignoring fatal:cannot describe - this means commit is untagged) "
     gh release create $NEW_TAG
-    gh release upload $NEW_TAG /var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher-$NEW_TAG-SNAPSHOT.jar'
+    gh release upload $NEW_TAG /var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher-$NEW_TAG-SNAPSHOT.jar
 else
     echo "Already a tag on this commit"
 fi
