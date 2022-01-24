@@ -48,7 +48,7 @@ pipeline {
 
 
                     GIT_COMMIT=`git rev-parse HEAD`
-                    NEEDS_TAG=`git describe --contains $GIT_COMMIT`
+                    NEEDS_TAG=`git describe --contains $GIT_COMMIT --always 2>/dev/null`
 
                     if [ -z "$NEEDS_TAG" ]; then
                         echo "Tagged with $NEW_TAG (Ignoring fatal:cannot describe - this means commit is untagged) "
