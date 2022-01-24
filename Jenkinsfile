@@ -16,8 +16,8 @@ pipeline {
         stage ('Release to Github') {
 	            steps {
                     sh '''
-                        gh release create 1.0.1
-                        gh release upload 1.0.1 /var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher-1.0.1-SNAPSHOT.jar
+                        gh release create 1.0.2
+                        gh release upload 1.0.2 /var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher-*-SNAPSHOT.jar
                     ''' }
             }
     }
