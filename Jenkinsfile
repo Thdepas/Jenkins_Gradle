@@ -16,13 +16,18 @@ pipeline {
         stage ('Release to Github') {
 	            steps {
                     sh '''
+                        #!/bin/bash
+
                         VERSION=`git tag --list --sort=version:refname '1*' | tail -1`
 
                         VERSION_BITS=(${VERSION//./ })
 
+                        echo"VERSION_BITS"
+
                         VNUM1=${VERSION_BITS[0]}
                         VNUM2=${VERSION_BITS[1]}
                         VNUM3=${VERSION_BITS[2]}
+                        
                         VNUM1=`echo $VNUM1 | sed 's/v//'`
 
                         MAJOR=`git log --format=%B -n 1 HEAD | grep '#major'`
