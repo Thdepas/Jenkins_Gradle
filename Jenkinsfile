@@ -22,10 +22,9 @@ pipeline {
 
                         VNUM1=${VERSION_BITS[0]}
                         VNUM2=${VERSION_BITS[1]}
-                        VNUM3=${VERSION_BITS[2]}
-                        
-                        """
-                    sh' MAJOR=`git log --format=%B -n 1 HEAD | grep "#major"`
+                        VNUM3=${VERSION_BITS[2]} """
+                   sh '    
+                        MAJOR=`git log --format=%B -n 1 HEAD | grep "#major"`
                         MINOR=`git log --format=%B -n 1 HEAD | grep "#minor"`
                         
                        if [ "$MAJOR" ]; then
@@ -40,12 +39,12 @@ pipeline {
                         else
                             echo "Update patch version"
                             VNUM3=${(VNUM3+1)}
-                        fi
-                    
+                        fi'
+                    sh '
                         NEW_TAG="$VNUM1.$VNUM2.$VNUM3"
                          
                         gh release create $NEW_TAG
-                        gh release upload $NEW_TAG /var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher.jar'
+                        gh release upload $NEW_TAG /var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher.jar '
 
                  }
             }
