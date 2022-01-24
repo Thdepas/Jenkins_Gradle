@@ -24,11 +24,11 @@ pipeline {
                         VNUM2=${VERSION_BITS[1]}
                         VNUM3=${VERSION_BITS[2]}
                         
-                    
-                        MAJOR=`git log --format=%B -n 1 HEAD | grep "#major"`
+                        """
+                    sh' MAJOR=`git log --format=%B -n 1 HEAD | grep "#major"`
                         MINOR=`git log --format=%B -n 1 HEAD | grep "#minor"`
-                   
-
+                        '
+                    sh """
                        if [ "$MAJOR" ]; then
                             echo "Update major version"
                             VNUM1=$((VNUM1+1))
