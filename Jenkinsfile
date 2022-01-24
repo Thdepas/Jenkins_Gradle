@@ -51,6 +51,8 @@ pipeline {
                     NEEDS_TAG=`git describe --contains $GIT_COMMIT --always 2>/dev/null`
 
                     if [ -z "$NEEDS_TAG" ]; then
+                        git tag -a $NEW_TAG
+                        git push origin $NEW_TAG
                         echo "Tagged with $NEW_TAG (Ignoring fatal:cannot describe - this means commit is untagged) "
                         gh release create $NEW_TAG --notes 'minor'
                         gh release upload $NEW_TAG /var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher-$NEW_TAG-SNAPSHOT.jar'
