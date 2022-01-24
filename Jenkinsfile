@@ -47,9 +47,9 @@ pipeline {
                         NEW_TAG="v$VNUM1.$VNUM2.$VNUM3"
 
                         echo "Updating $VERSION to $NEW_TAG"
-                        echo "Tagged with $NEW_TAG 
-                        gh release create $NEW_TAG
-                        gh release upload $NEW_TAG /var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher.jar
+                        echo "Tagged with $NEW_TAG" 
+                        gh release create ${NEW_TAG}
+                        gh release upload ${NEW_TAG} /var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher.jar
 
                     ''' }
             }
