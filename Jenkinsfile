@@ -18,11 +18,11 @@ pipeline {
                     sh '''
                         VERSION=`git tag --list --sort=version:refname '1*' | tail -1`
 
-                        VERSION_BITS=${VERSION//./}
+                        VERSION_BITS=(${VERSION//./})
 
-                        VNUM1=${VERSION_BITS[0]}
-                        VNUM2=${VERSION_BITS[1]}
-                        VNUM3=${VERSION_BITS[2]}
+                        VNUM1=$({VERSION_BITS[0]})
+                        VNUM2=$({VERSION_BITS[1]})
+                        VNUM3=$({VERSION_BITS[2]})
                         
                         VNUM1=`echo $VNUM1 | sed 's/v//'`
 
@@ -43,7 +43,7 @@ pipeline {
                             VNUM3=$((VNUM3+1))
                         fi
 
-                        NEW_TAG="v$VNUM1.$VNUM2.$VNUM3"
+                        NEW_TAG="$VNUM1.$VNUM2.$VNUM3"
 
                         echo "Updating $VERSION to $NEW_TAG"
                         echo "Tagged with $NEW_TAG" 
