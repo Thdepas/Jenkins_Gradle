@@ -43,10 +43,7 @@ pipeline {
                         fi
                     
                         NEW_TAG="$VNUM1.$VNUM2.$VNUM3"
-                        
-                     '
-
-                      sh' 
+                         
                         gh release create $NEW_TAG
                         gh release upload $NEW_TAG /var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher.jar'
 
