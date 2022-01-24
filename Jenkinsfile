@@ -18,7 +18,7 @@ pipeline {
                     sh '''
                         VERSION=`git tag --list --sort=version:refname '1*' | tail -1`
 
-                        VERSION_BITS=${VERSION//./ }
+                        VERSION_BITS=${VERSION//./}
 
                         VNUM1=${VERSION_BITS[0]}
                         VNUM2=${VERSION_BITS[1]}
