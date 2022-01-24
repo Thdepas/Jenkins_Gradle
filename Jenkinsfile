@@ -16,8 +16,6 @@ pipeline {
         stage ('Release to Github') {
 	            steps {
                     sh '''
-                        #!/bin/bash
-
                         VERSION=`git tag --list --sort=version:refname '1*' | tail -1`
 
                         VERSION_BITS=(${VERSION//./ })
