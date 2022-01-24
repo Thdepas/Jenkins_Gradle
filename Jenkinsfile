@@ -16,13 +16,11 @@ pipeline {
         stage ('Release to Github') {
 	            steps {
                     sh '''
-                        #!/bin/bash
-
                         VERSION=`git tag --list --sort=version:refname '1*' | tail -1`
 
                         VERSION_BITS=(${VERSION//./ })
 
-                        echo"VERSION_BITS"
+                        echo"$VERSION_BITS"
 
                         VNUM1=${VERSION_BITS[0]}
                         VNUM2=${VERSION_BITS[1]}
@@ -51,8 +49,8 @@ pipeline {
 
                         echo "Updating $VERSION to $NEW_TAG"
                         echo "Tagged with $NEW_TAG" 
-                        gh release create ${NEW_TAG}
-                        gh release upload ${NEW_TAG} /var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher.jar
+                        gh release create $NEW_TAG
+                        gh release upload $NEW_TAG /var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher.jar
 
                     ''' }
             }
