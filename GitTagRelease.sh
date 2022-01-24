@@ -31,7 +31,6 @@ else
     VNUM3=$((VNUM3+1))
 fi
 
-
 #create new tag
 NEW_TAG="v$VNUM1.$VNUM2.$VNUM3"
 
