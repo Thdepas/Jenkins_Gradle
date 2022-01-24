@@ -27,14 +27,13 @@ pipeline {
                         """
                     sh' MAJOR=`git log --format=%B -n 1 HEAD | grep "#major"`
                         MINOR=`git log --format=%B -n 1 HEAD | grep "#minor"`
-                        '
-                    sh """
-                       if ("$MAJOR"); then
+                        
+                       if [ "$MAJOR" ]; then
                             echo "Update major version"
                             VNUM1=$((VNUM1+1))
                             VNUM2=0
                             VNUM3=0
-                        elif ("$MINOR"); then
+                        elif [ "$MINOR" ]; then
                             echo "Update minor version"
                             VNUM2=$((VNUM2+1))
                             VNUM3=0
