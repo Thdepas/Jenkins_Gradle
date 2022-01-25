@@ -1,12 +1,11 @@
 pipeline {
-  agent any
+    agent any
 
     stages {
         stage('Clone') {
             steps {
-                 sh "rm -rf *"
-                 sh "git clone https://github.com/Thdepas/Jenkins_Gradle.git"
-
+                sh 'rm -rf *'
+                sh 'git clone https://github.com/Thdepas/Jenkins_Gradle.git'
             }
         }
         stage('Build') {
@@ -17,9 +16,7 @@ pipeline {
         stage ('Release to Github') {
                 steps {
                     sh 'cd Jenkins_Gradle && chmod +x GitTagRelease.sh && ./GitTagRelease.sh'
-
                 }
         }
     }
 }
-é
