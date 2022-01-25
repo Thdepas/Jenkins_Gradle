@@ -26,7 +26,11 @@ else
     VNUM3=$(($VNUM3+1))
 fi
 
+
 NEW_TAG="${VNUM1}.${VNUM2}.${VNUM3}"
 
-gh release create "$NEW_TAG" -n "patch"
-gh release upload "$NEW_TAG /var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher.jar"
+echo $NEW_TAG
+echo $VERSION
+
+gh release create $NEW_TAG -n "patch"
+gh release upload $NEW_TAG /var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher.jar
