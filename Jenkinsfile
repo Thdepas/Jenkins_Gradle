@@ -16,9 +16,10 @@ pipeline {
         }
         stage ('Release to Github') {
                 steps {
-                    sh 'chmod +x GitTagRelease.sh && ./GitTagRelease.sh'
+                    sh 'pwd'
 
                 }
         }
     }
 }
+é
