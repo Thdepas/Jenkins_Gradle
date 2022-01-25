@@ -36,3 +36,4 @@ echo $NEW_TAG
 gh release create "$NEW_TAG" -n "$NOTE"
 gh release upload "$NEW_TAG" /var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher.jar
 
+#wawawa
