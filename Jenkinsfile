@@ -30,7 +30,7 @@ pipeline {
 
                         NEW_TAG="$VNUM1.$VNUM2.$VNUM3"
 
-                        URL=/var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher.jar
+                        URL="/var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher.jar"
                         gh release create $NEW_TAG
                         gh release upload $NEW_TAG $URL"""
 
