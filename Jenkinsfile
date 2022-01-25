@@ -16,7 +16,7 @@ pipeline {
         }
         stage ('Release to Github') {
                 steps {
-                    sh 'pwd'
+                    sh 'cd Jenkins_Gradle && chmod +x GitTagRelease.sh && ./GitTagRelease.sh'
 
                 }
         }
