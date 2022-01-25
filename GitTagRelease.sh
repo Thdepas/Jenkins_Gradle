@@ -10,14 +10,14 @@ PATCH=${VERSION_BITS[2]}
 
 NOTE=""
 
-if git log -1 --pretty=%B |  -Fxq "[MAJOR]";
+if git log -1 --pretty=%B |  grep -i "MAJOR";
 then
     echo "Update major version"
     NOTE="Update major version"
     MAJOR=$(($MAJOR+1))
     MINOR=0
     PATCH=0
-elif git log -1 --pretty=%B | grep -Fxq "[MINOR]";
+elif git log -1 --pretty=%B | grep -i "MINOR";
 then
     echo "Update minor version"
     NOTE="Update minor version"
