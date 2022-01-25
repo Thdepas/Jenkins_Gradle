@@ -26,8 +26,8 @@ pipeline {
                         VNUM3=${VERSION_BITS[2]}
 
 
-                        MAJOR=${`git log --format=%B -n 1 HEAD | grep '#major'`}
-                        MINOR=${`git log --format=%B -n 1 HEAD | grep '#minor'`}
+                        MAJOR=${git log --format=%B -n 1 HEAD | grep '#major'}
+                        MINOR=${git log --format=%B -n 1 HEAD | grep '#minor'}
 
                         if [ "${MAJOR[@]}" ];
                         then
