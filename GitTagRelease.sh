@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=`git tag --list --sort=version:refname '1*' | tail -1`
+VERSION=`git describe --abbrev=0 --tags`
 
 VERSION_BITS=(${VERSION//./})
 
@@ -26,7 +26,7 @@ then
 else
     echo "Update patch version"
     NOTE="Update patch version"
-    VNUM3=$(($PATCH+1))
+    PATCH=$(($PATCH+1))
 fi
 
 NEW_TAG="$MAJOR.$MINOR.$PATCH"
@@ -35,3 +35,4 @@ echo $NEW_TAG
 
 gh release create "$NEW_TAG" -n "$NOTE"
 gh release upload "$NEW_TAG" /var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher.jar
+
