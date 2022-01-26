@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=`git describe --abbrev=0 --tags`
+VERSION=`git for-each-ref --format="%(refname:short)" --sort=-authordate --count=1 refs/tags`
 
 VERSION_BITS=(${VERSION//./})
 
@@ -35,7 +35,6 @@ else
 
 fi
 
-
 NEW_TAG="$MAJOR.$MINOR.$PATCH"
 
 echo $NEW_TAG
@@ -43,4 +42,3 @@ echo $NEW_TAG
 gh release create "$NEW_TAG" -n "$NOTE"
 gh release upload "$NEW_TAG" /var/jenkins_home/workspace/Caersar/Jenkins_Gradle/build/libs/caesars-cipher.jar
 
-#wawawa
