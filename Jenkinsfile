@@ -15,8 +15,8 @@ pipeline {
         }
         stage ('Release to Github') {
                 steps {
-                    sh 'cd Jenkins_Gradle && exec env --ignore-environment /bin/bash &&
-                     chmod +x GitTagRelease.sh && ./GitTagRelease.sh'
+                    sh 'cd Jenkins_Gradle && exec env --ignore-environment /bin/bash  \
+                    && chmod +x GitTagRelease.sh && ./GitTagRelease.sh'
                 }
         }
     }
