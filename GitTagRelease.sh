@@ -23,7 +23,8 @@ then
     NOTE="Update minor version"
     MINOR=$((MINOR+1))
     PATCH=0
-else
+elif git log -1 --pretty=%B | grep -i "PATCH";
+then
     echo "Update patch version"
     NOTE="Update patch version"
     PATCH=$((PATCH+1))
