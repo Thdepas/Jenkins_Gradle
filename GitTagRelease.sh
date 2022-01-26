@@ -14,20 +14,26 @@ if git log -1 --pretty=%B |  grep -i "MAJOR";
 then
     echo "Update major version"
     NOTE="Update major version"
-    MAJOR=$(($MAJOR+1))
+    MAJOR=$((MAJOR+1))
     MINOR=0
     PATCH=0
 elif git log -1 --pretty=%B | grep -i "MINOR";
 then
     echo "Update minor version"
     NOTE="Update minor version"
-    MINOR=$(($MINOR+1))
+    MINOR=$((MINOR+1))
     PATCH=0
 else
     echo "Update patch version"
     NOTE="Update patch version"
-    PATCH=$(($PATCH+1))
+    PATCH=$((PATCH+1))
+else
+    MINOR=$((MINOR+1))
+    echo "Update minor version"
+    NOTE="Update minor version"
+
 fi
+
 
 NEW_TAG="$MAJOR.$MINOR.$PATCH"
 
